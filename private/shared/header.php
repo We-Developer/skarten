@@ -39,9 +39,9 @@
 
 
                 <header class="row">
-                 <!--  <div  class="align-Left border col-xs-2">
+                   <div  class="align-Left border col-xs-2">
                     <img src="images/logo.png" style="width:25%; padding:10px; float: left;">
-                  </div> -->
+                  </div> 
                    <div class="col-xs-12 ">
 
                     <nav class="navbar navbar-default">

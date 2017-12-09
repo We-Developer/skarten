@@ -8,10 +8,10 @@
                             <img class="" style="width:60%; padding:8px;" src="images/logo2.png"/>
                         </center>
                     </div>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
-                    <p><i class="fa fa-map-pin"></i> 210, Aggarwal Tower, Rohini sec 9, New Delhi -        110085, INDIA</p>
-                    <p><i class="fa fa-phone"></i> Phone (India) : +91 9999 878 398</p>
-                    <p><i class="fa fa-envelope"></i> E-mail : info@webenlance.com</p>
+                    <p></p>
+                    <p><i class="fa fa-map-pin"></i>adress</p>
+                    <p><i class="fa fa-phone"></i> Phone : </p>
+                    <p><i class="fa fa-envelope"></i> E-mail : </p>
 
                   </div>
                   <div class="col-md-2 col-sm-6 paddingtop-bottom">
@@ -50,7 +50,7 @@
             <div class="copyright">
               <div class="container">
                 <div class="col-md-6">
-                  <p><?php echo $row['copyright']; ?></p>
+                  <p> @copy:<?php echo date('Y');  ?> We developers</p>
                 </div>
 
               </div>

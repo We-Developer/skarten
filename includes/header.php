@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-  include('.../includes/config.php');
+  include('config.php');
 ?>
 <html lang="em">
     <head>
@@ -61,7 +61,15 @@
                         <ul class="nav navbar-nav">
                           <li class=""><a href="#">Buy</a></li>
                           <li><a href="panel/addItem.php">Sell</a></li>
-                          <li><a href="login.php">Login</a></li>
+                          <?php 
+                          if($user->is_logged_in()) {
+                            echo '<li><a href="dashboard.php">'.$_SESSION['userName'].'</a></li>';
+                            echo '<li><a href="logout.php">Logout</a></li>';
+
+                          } else {
+                            echo '<li><a href="login.php">Login</a></li>';
+                          }
+                          ?>
                         </ul>
                       </div>
                     </nav>

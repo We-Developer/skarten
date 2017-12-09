@@ -1,13 +1,13 @@
 <?php 
-    include('private/shared/header.php');
+    include('includes/header.php');
 ?>
             
-<?php include('private/shared/slider1.php');?>
-<?php include('private/shared/slider2.php');?>
+<?php include('includes/slider1.php');?>
+<?php include('includes/slider2.php');?>
 
 
 <?php
-    include ('private/shared/footer.php');
+    include ('includes/footer.php');
 ?>
 
             

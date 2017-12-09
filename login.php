@@ -1,6 +1,25 @@
 
 <?php
-    include('../shared/header.php');
+    include('includes/header.php');
+    if(isset($_SESSION['loggedin'])) {
+        if($_SESSION['loggedin'] == true) {
+            header('Location: index.php');
+        }
+    }
+
+    if(isset($_POST['submit'])) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        if($user->login($username,$password)) {
+            
+            header('Location: index.php');
+            exit;
+            
+        } else {
+            
+            #Login Error Displayed
+        }
+    }
 ?>
 
     <div class="container-fluid">
@@ -12,7 +31,7 @@
             <div class="col-sm-10 text-center" style="">
                 <center>
                     <div class="logoContainer">
-                    <img class="" style="width:70%; padding:8px;" src="images/logo2.png"/>      
+                    <img class="" style="width:50%; padding:15px;" src="data:image/jpeg;base64,<?php echo base64_encode( $row['logo'] )?>"/>      
                 </div>
                 </center>
                 
@@ -35,20 +54,20 @@
                 <div class="loginContainer">
                     
                     <h1 >Login</h1> 
-                    
+                        <form method="POST" action=""> 
                         <div class="formElementContainer">
-                             <input  type="text" class="tfLogin" placeholder="Username" required>   
+                             <input name="username" type="text" class="tfLogin" placeholder="Username" required>   
                             
                         </div>
                     
                         <div class="formElementContainer">
-                             <input  type="password" class="tfLogin" placeholder="Password" required>   
+                             <input name="password" type="password" class="tfLogin" placeholder="Password" required>   
                             
                         </div>
                     
                         <div class="formElementContainer">
                             
-                            <input  type="Button" class="loginBtn" style="" value="Login"> 
+                            <input type="submit" name="submit" class="loginBtn" style="" value="Login"> 
                             
                         </div>
                     
@@ -58,7 +77,7 @@
                             <a href="register.php" >Do not have an account ? Sign Up </a>
                             
                         </div>
-                    
+                        </form>
             
                              
                 </div>      

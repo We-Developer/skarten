@@ -1,5 +1,5 @@
 <?php 
-    include('../shared/header.php');
+  include('../includes/config.php');
 ?>
 
 <body>
@@ -154,5 +154,5 @@
         
     
 <?php
-    include('../shared/footer.php');
+    include('../includes/footer.php');
 ?>

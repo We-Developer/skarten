@@ -57,12 +57,13 @@
                     <nav class="navbar navbar-default">
                       <div class="container-fluid">
                         <div class="navbar-header">
-                          <a class="navbar-brand " href="index.php">
+                          <a class="navbar-brand " href="../../../Fiverr/skarten_master">
                           <img style="width:20px;" src="data:image/jpeg;base64,<?php echo base64_encode( $row['logo'] )?>"/></a>
                         </div>
                         <ul class="nav navbar-nav">
                           <li class=""><a href="../../../Fiverr/skarten_master/content/addItem.php">Buy</a></li>
                           <li><a href="../../../Fiverr/skarten_master/content/oneProduct.php">Sell</a></li>
+                           <li><a href="../../../Fiverr/skarten_master/login.php">Login</a></li> 
                           <?php 
 //                          if($user->is_logged_in()) {
 //                            echo '<li><a href="dashboard.php">'.$_SESSION['userName'].'</a></li>';

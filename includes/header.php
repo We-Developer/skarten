@@ -29,8 +29,10 @@
 
             <div class="col-sm-3">
                   <a href="<?php echo $row['baseDir']; ?>" alt="Home">
-                    <img style="width:70%; padding:8px;" src="data:image/png;base64,<?php echo base64_encode($row['logo'])?>"/>
-                  </a>
+<!--                    <img style="width:70%; padding:8px;" src="data:image/png;base64,<?php echo base64_encode($row['logo'])?>"/>-->
+                        <img style="width:70%; padding:8px;" src="../../../Fiverr/skarten_master/assets/images/logo2.png"/>
+
+                </a>
             </div>
 
                <div style="padding: 20px;" class=" col-xs-6">
@@ -58,7 +60,8 @@
                       <div class="container-fluid">
                         <div class="navbar-header">
                           <a class="navbar-brand " href="../../../Fiverr/skarten_master">
-                          <img style="width:20px;" src="data:image/jpeg;base64,<?php echo base64_encode( $row['logo'] )?>"/></a>
+<!--                          <img style="width:20px;" src="data:image/jpeg;base64,<?php echo base64_encode( $row['logo'] )?>"/></a>-->
+                              <img style="width:90px;" src="../../../Fiverr/skarten_master/assets/images/logo2.png"/></a>
                         </div>
                         <ul class="nav navbar-nav">
                           <li class=""><a href="../../../Fiverr/skarten_master/content/addItem.php">Buy</a></li>

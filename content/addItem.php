@@ -1,6 +1,8 @@
 <?php 
-//  include('../includes/config.php');
-    include '../includes/header.php';
+  include('../includes/header.php');
+
+  if($user->is_logged_in()) {
+      $username = $_SESSION['userName'];
 ?>
 
 <body>
@@ -155,5 +157,11 @@
         
     
 <?php
-    include '../includes/footer.php';
+  } else {
+?>
+    <a href="../register.php" alt="Register for an Account">Register</a><br />
+    <a href="../login.php" alt="Login to your Account">Login</a><br />
+<?php
+  }
+    include('../includes/footer.php');
 ?>

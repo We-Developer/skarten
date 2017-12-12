@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <?php
-//  include('config.php');
+  include('config.php');
 ?>
 <html lang="em">
     <head>
       <title><?php echo $row['title']." | ".$row['description'];; ?></title>
-        
+      <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-      <!--<meta property='og:image' content="<?php echo $r['logo'];?>"/>-->
-      <meta property='og:url' content="<?php echo $r['baseDir'];?>"/>
-      <meta name="description" content="<?php echo $q['description'];?>"/> 
-      <meta name='keywords' content="<?php echo $q['keywords'];?>"/>
-      <meta name="author" content="<?php echo $r['title'];?>"/> 
+      <meta property='og:url' content="<?php echo $row['baseDir'];?>"/>
+      <meta name="description" content="<?php echo $row['description'];?>"/> 
+      <meta name='keywords' content="<?php echo $row['keywords'];?>"/>
+      <meta name="author" content="<?php echo $row['title'];?>"/> 
       <link rel='shortcut icon' href="data:image/png;base64,<?php echo base64_encode($row['favicon'])?>" type='image/x-icon'/ >
+      <link rel="stylesheet" type="text/css" href="<?php echo $row['baseDir'];?>assets/styles/stylesheet.css">
+      <link rel="stylesheet" type="text/css" href="<?php echo $row['baseDir'];?>assets/styles/loginStyle.css">
       <link href="https://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
-        
-      <link rel="stylesheet" type="text/css" href="../../../Fiverr/skarten_master/assets/styles/stylesheet.css">
-
-      
+      <script type="text/Javascript" src="<?php echo $row['baseDir'];?>assets/country.js"></script>
     </head>
     <body>
         <div class="container-fluid">
@@ -57,21 +55,20 @@
                     <nav class="navbar navbar-default">
                       <div class="container-fluid">
                         <div class="navbar-header">
-                          <a class="navbar-brand " href="../../../Fiverr/skarten_master">
+                          <a class="navbar-brand " href="index.php">
                           <img style="width:20px;" src="data:image/jpeg;base64,<?php echo base64_encode( $row['logo'] )?>"/></a>
                         </div>
                         <ul class="nav navbar-nav">
-                          <li class=""><a href="../../../Fiverr/skarten_master/content/addItem.php">Buy</a></li>
-                          <li><a href="../../../Fiverr/skarten_master/content/oneProduct.php">Sell</a></li>
-                           <li><a href="../../../Fiverr/skarten_master/login.php">Login</a></li> 
+                          <li class=""><a href="#">Buy</a></li>
+                          <li><a href="content/addItem.php">Sell</a></li>
                           <?php 
-//                          if($user->is_logged_in()) {
-//                            echo '<li><a href="dashboard.php">'.$_SESSION['userName'].'</a></li>';
-//                            echo '<li><a href="logout.php">Logout</a></li>';
-//
-//                          } else {
-//                            echo '<li><a href="login.php">Login</a></li>';
-//                          }
+                          if($user->is_logged_in()) {
+                            echo '<li><a href="/skarten-ecommerce/dashboard.php">'.$_SESSION['userName'].'</a></li>';
+                            echo '<li><a href="/skarten-ecommerce/logout.php">Logout</a></li>';
+
+                          } else {
+                            echo '<li><a href="/skarten-ecommerce/login.php">Login</a></li>';
+                          }
                           ?>
                         </ul>
                       </div>

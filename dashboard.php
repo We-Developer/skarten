@@ -25,8 +25,8 @@
             <div class="col-sm-10 text-center" style="">
             <div style="background-color: #fff; padding: 25px; margin: 2px auto;">
                 <center>
-                    <h1>Welcome, <?php echo $userData['name']; ?></h1>
-                    <img src="data:image/jpeg;base64,<?php echo base64_encode($userData['avatar'])?>" alt="Avatar of <?php echo $userData['name']; ?>" style="width: 30%;"/>
+                    <h1>Welcome, <?php echo $userData['name']; ?></h1>                
+                    <img src="data:image/jpg;base64,<?php echo base64_encode(stream_get_contents($userData['avatar']))?>" alt="Avatar of <?php echo $userData['name']; ?>" style="width: 30%;"/>
                     <br />
                     <ul style="list-style-type:none">
                     <li><?php echo $userData['email']; ?></li>
@@ -34,7 +34,7 @@
                     <li><?php echo $userData['registered']; ?></li>
                     <?php 
                         if($userData['role'] == 1) {
-                            echo '<li><a href="edit.php">Edit Profile</a></li>';
+                            echo '<li><a href="content/editProfile.php">Edit Profile</a></li>';
                         } else if($userData['role'] == 0) {
                             echo '<li><a href="admin/">Administrator</a></li>';
                         }

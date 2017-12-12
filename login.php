@@ -18,6 +18,7 @@
         } else {
             
             #Login Error Displayed
+            echo '<div class="error">Invalid Username or Password!</div>';
         }
     }
 ?>

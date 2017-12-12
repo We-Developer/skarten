@@ -44,16 +44,54 @@ class User extends Password{
 		$hashed = $this->get_user_hash($username);
 		
 		if($this->password_verify($password,$hashed) == 1){
-		    
-			$_SESSION['loggedin'] = true;
-			$_SESSION['userName'] = $username;
-		    return true;
+			
+			try {
+				$stmt = $this->_db->prepare('SELECT emailVerify FROM user WHERE username = :username');
+				$stmt->execute(array('username' => $username));
+
+				$row = $stmt->fetch();
+				
+				if($row['emailVerify'] == 1) {
+					$_SESSION['loggedin'] = true;
+					$_SESSION['userName'] = $username;
+					return true;
+				} else {
+					echo '<div class="error">Please verify your email</div>';
+				}
+
+			} catch(PDOException $e) {
+				echo '<p class="error">'.$e->getMessage().'</p>';
+			}
+
+		    return false;
 		}		
 	}
 	
 	#Destroy the user's current session if the user logs out
 	public function logout(){
 		session_destroy();
+	}
+
+	public function email_verify($email,$name,$hash) {
+		$to      = $email; // Send email to our user
+		$subject = 'Signup | Verification'; // Give the email a subject 
+		$message = '
+		 
+		Thanks for signing up!
+		Your account has been created, you can login with the registered credentials after verifying your account with the link below.
+		 
+		------------------------
+		Username: '.$name.'
+		Email: '.$email.'
+		------------------------
+		 
+		Please click this link to activate your account:
+		localhost:8081/skarten-ecommerce/verify.php?email='.$email.'&hash='.$hash.'
+		 
+		'; // Our message above including the link
+							 
+		$headers = 'From:noreply@skarten.com' . "\r\n"; // Set from headers
+		mail($to, $subject, $message, $headers); // Send our email
 	}
 	
 }

@@ -30,8 +30,7 @@ footer{
     font-size: 20px;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,300');
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700,700i');
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
 footer { background-color:#0c1a1e; min-height:350px; font-family: 'Open Sans', sans-serif; }
 .footerleft { margin-top:50px; padding:0 36px; }
 .logofooter { margin-bottom:10px; font-size:25px; color:#fff; font-weight:700;}
@@ -70,19 +69,3 @@ footer { background-color:#0c1a1e; min-height:350px; font-family: 'Open Sans', s
  .bottom_ul li { float:left; line-height:40px;}
  .bottom_ul li:after { content:"/"; color:#FFF; margin-right:8px; margin-left:8px;}
  .bottom_ul li a { color:#FFF;  font-size:12px;}
-
- .error { 
-    color: #c0392b;
-    font-family: 'Roboto',sans-serif;
-    font-size: 24px;
-    text-align: center;
-    font-weight: 700;
-}
-
-.success {
-    color: #2ecc71;
-    font-family: 'Roboto',sans-serif;
-    font-size: 12px;
-    text-align: center;
-    font-weight: 700;
-}

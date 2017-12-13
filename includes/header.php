@@ -64,8 +64,8 @@
                               <img style="width:90px;" src="../../../Fiverr/skarten_master/assets/images/logo2.png"/></a>
                         </div>
                         <ul class="nav navbar-nav">
-                          <li class=""><a href="../../../Fiverr/skarten_master/content/addItem.php">Buy</a></li>
-                          <li><a href="../../../Fiverr/skarten_master/content/oneProduct.php">Sell</a></li>
+                          <li class=""><a href="../../../Fiverr/skarten_master/content/oneProduct.php">Buy</a></li>
+                          <li><a href="../../../Fiverr/skarten_master/content/addItem.php">Sell</a></li>
                            <li><a href="../../../Fiverr/skarten_master/login.php">Login</a></li> 
                           <?php 
 //                          if($user->is_logged_in()) {

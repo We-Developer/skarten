@@ -93,6 +93,22 @@ class User extends Password{
 		$headers = 'From:noreply@skarten.com' . "\r\n"; // Set from headers
 		mail($to, $subject, $message, $headers); // Send our email
 	}
+
+	#Return true if the User is a Seller - false if Buyer
+	public function role() {
+		try {
+			
+			$stmt = $this->_db->prepare('SELECT role FROM user WHERE username = :username');
+			$stmt->execute(array('username' => $_SESSION['userName']));
+					
+			$row = $stmt->fetch();
+
+			return $row['role'];
+			
+		} catch(PDOException $e) {
+			echo '<p class="error">'.$e->getMessage().'</p>';
+		}
+	}
 	
 }
 

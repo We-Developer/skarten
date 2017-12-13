@@ -24,9 +24,14 @@
     <body>
     
     <header class="row" style="background-color: #f4f4f4; margin-left:0px; margin-right:0px;">
+
       <div class="col-sm-3">
         <a href="<?php echo $row['baseDir']; ?>" alt="Home">
-          <img style="width:300px; padding:8px;" src="data:image/png;base64,<?php echo base64_encode($row['logo'])?>"/>
+          <div class="col-sm-3">
+            <a href="<?php echo $row['baseDir']; ?>" alt="Home">
+              <img style="width:300px; padding:8px;" src="data:image/png;base64,<?php echo base64_encode($row['logo'])?>"/>
+            </a>
+          </div>
         </a>
       </div>
       <form action="search.php" method="POST" class="search">
@@ -53,14 +58,45 @@
       </div>
     </header>
     
-    <header class="row" style="margin-left: 0px; margin-right: 0px; background-color:rgba(0,230,64,1.0);">
+    <header class="row" style="margin-left: 0px; margin-right: 0px; margin-bottom: 20px; background-color:rgba(0,230,64,1.0);">
       <nav>
-          <h2>Skarten Navigation</h2>
+        <!--Add Navigation Here-->
+        <!-- Content Float to Left-->
+        <div class="left">
+            <ul>
+              <li><a href="<?php echo $row['baseDir']; ?>content/cat" alt="Product Categories">Categories</li>
+              <li><a href="<?php echo $row['baseDir']; ?>register" alt="Become a Seller">Sell</a></li>
+            </ul>
+        </div>
+        <!-- Content Float to Left-->
+        <div class="right">
+          <ul>
+            <?php
+              # If the user is logged in, allow the user to view their cart
+              if($user->is_logged_in()) {
+            ?>
+              <li><a href="<?php echo $row['baseDir'];?>content/cart" alt="Shopping Cart"><i class="fa fa-shopping-basket fa-2x" aria-hidden="true"></i></a></li>
+              <li><a href="<?php echo $row['baseDir'];?>content/wishlist" alt="Wish List"><i class="fa fa-heart fa-2x" aria-hidden="true"></i></a></li>
+              <li><a href="<?php echo $row['baseDir'];?>content/alerts" alt="New Alerts"><i class="fa fa-bell-o fa-2x" aria-hidden="true"></i></a></li>  
+            <?php
+              } else {
+              # Link the Cart icon to the Login Page
+            ?>
+              <li><a href="<?php echo $row['baseDir'];?>login" alt="Login to View Shopping Cart"><i class="fa fa-shopping-basket fa-2x" aria-hidden="true"></i></a></li>
+            <?php
+              }
+            ?>
+          </ul>
+        </div>
       </nav>
     </header>
 
     <div class="container-fluid"> 
     
       <div class="container-stretch">
-        
+        <header class="row">
+          <div class="col-sm">
+           
+          </div>      
+        </header>
      </div>

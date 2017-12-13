@@ -3,14 +3,14 @@
     include('includes/header.php');
     if(!isset($_SESSION['loggedin'])) {
         if($_SESSION['loggedin'] == false) {
-            header('Location: index.php');
+            header('Location: index');
         }
-            header('Location: index.php');
+            header('Location: index');
     }
 
     if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         $user->logout();
-        header('Location: index.php');
+        header('Location: index');
     }
 ?>
 

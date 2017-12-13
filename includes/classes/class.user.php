@@ -56,7 +56,7 @@ class User extends Password{
 					$_SESSION['userName'] = $username;
 					return true;
 				} else {
-					echo '<div class="error">Please verify your email</div>';
+					
 				}
 
 			} catch(PDOException $e) {

@@ -5,7 +5,7 @@
                   <div class="col-md-4 col-sm-6 footerleft ">
                     <div class="logofooter"> 
                         <center>
-                            <img class="" style="width:60%; padding:8px;" src="images/logo2.png"/>
+                            <img class="" style="width:60%; padding:8px;" src="../../../Fiverr/skarten_master/assets/images/logo2.png"/>
                         </center>
                     </div>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>

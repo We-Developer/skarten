@@ -40,10 +40,13 @@
     
     <header class="row" style="background-color: #f4f4f4; margin-left:0px; margin-right:0px;">
 
-    <div class="col-sm-3">
-          <a href="<?php echo $row['baseDir']; ?>" alt="Home">
+            <div class="col-sm-3">
+                  <a href="<?php echo $row['baseDir']; ?>" alt="Home">
 <!--                    <img style="width:70%; padding:8px;" src="data:image/png;base64,<?php echo base64_encode($row['logo'])?>"/>-->
-                <img style="width:70%; padding:8px;" src="../../../Fiverr/skarten_master/assets/images/logo2.png"/>
+                        <img style="width:70%; padding:8px;" src="../../../Fiverr/skarten_master/assets/images/logo2.png"/>
+
+                </a>
+            </div>
 
         </a>
     </div>
@@ -69,28 +72,31 @@
           </div> -->
            <div class="col-xs-12 ">
 
-            <nav class="navbar navbar-default">
-              <div class="container-fluid">
-                <div class="navbar-header">
-                  <a class="navbar-brand " href="../../../Fiverr/skarten_master">
-<!--                          <img style="width:20px;" src="data:image/jpeg;base64,<?php echo base64_encode( $row['logo'] )?>"/></a>-->
-                      <img style="width:90px;" src="../../../Fiverr/skarten_master/assets/images/logo2.png"/></a>
-                </div>
-                <ul class="nav navbar-nav">
-                  <li class=""><a href="../../../Fiverr/skarten_master/content/addItem.php">Buy</a></li>
-                  <li><a href="../../../Fiverr/skarten_master/content/oneProduct.php">Sell</a></li> 
-                  <?php 
-                      if($user->is_logged_in()) {
-                        echo '<li><a href="../../../Fiverr/skarten_master/dashboard.php">'.$_SESSION['userName'].'</a></li>';
-                        echo '<li><a href="../../../Fiverr/skarten_master/logout.php">Logout</a></li>';
 
-                      } else {
-                        echo '<li><a href="../../../Fiverr/skarten_master/login.php">Login</a></li>';
-                      }
-                  ?>
-                </ul>
-              </div>
-            </nav>
+                    <nav class="navbar navbar-default">
+                      <div class="container-fluid">
+                        <div class="navbar-header">
+                          <a class="navbar-brand " href="../../../Fiverr/skarten_master">
+<!--                          <img style="width:20px;" src="data:image/jpeg;base64,<?php echo base64_encode( $row['logo'] )?>"/></a>-->
+                              <img style="width:90px;" src="../../../Fiverr/skarten_master/assets/images/logo2.png"/></a>
+                        </div>
+                        <ul class="nav navbar-nav">
+                          <li class=""><a href="../../../Fiverr/skarten_master/content/oneProduct.php">Buy</a></li>
+                          <li><a href="../../../Fiverr/skarten_master/content/addItem.php">Sell</a></li>
+                           <li><a href="../../../Fiverr/skarten_master/login.php">Login</a></li> 
+                          <?php 
+//                          if($user->is_logged_in()) {
+//                            echo '<li><a href="dashboard.php">'.$_SESSION['userName'].'</a></li>';
+//                            echo '<li><a href="logout.php">Logout</a></li>';
+//
+//                          } else {
+//                            echo '<li><a href="login.php">Login</a></li>';
+//                          }
+                          ?>
+                        </ul>
+                      </div>
+                    </nav>
+
 
           </div>      
         </header>

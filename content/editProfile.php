@@ -223,14 +223,12 @@
 
 <title>Update Profile - <?php echo $row['title']; ?></title>
 <body>
-    
-<div style="background-color: #fff; padding: 25px; margin: 2px auto;">
     <div class="container-fluid">
-        
-        <div class="container">
+        <div class="content">
             
-            <section class="row">
+            <form method="POST" action="" name="update" enctype="multipart/form-data" onsubmit="return validateForm()" class="data">
                 
+            <section class="row">
                 <?php
                     if(isset($success)) {
                         if($success == true) {
@@ -240,105 +238,84 @@
                 ?>
 
                 <div class="col-sm-12" style="padding:20px;">
-                   
                     <h1 >Settings</h1>
                 </div>
-                    <div class="error" id="errorForm"></div>
-
+                <div class="error" id="errorForm"></div>
             </section>
-            <form method="POST" action="" name="update" enctype="multipart/form-data" onsubmit="return validateForm()">
-            
+
             <section class="row">
                 <div class="col-sm-8" style="padding:20px;">
                     <label for="image"> Avatar</label>
                     <input type="file" name="avatar"/>
                 </div>
             </section>
+            <section class="row">
+                <div class="col-sm-6" style="padding:20px;">
+                    <label for="name"> Full Name </label>
+                    <input  type="text" name="name" class="form-control" style="min-width:100px; padding: 20px;" value="<?php echo $result['name'];?>">
+                </div>
+                <div class="col-sm-6" style="padding: 20px;">
+                    <label for="email"> Email </label>
+                    <input  type="text" name="email" class="form-control" style="min-width:100px; padding: 20px;" value="<?php echo $result['email'];?>">                   
+                </div>
+            </section>
             
             <section class="row">
-                <div class="col-sm-12" style="padding:20px;">
-                    <label for="name"> Full Name </label>
-                    <input  type="text" name="name" class="form-control" style="min-width:100px; padding: 20px;" value="<?php echo $result['name'];?>">                       
-                </div>
-            </section>
-
-             <section class="row">
-                <div class="col-sm-12" style="padding:20px;">
-                    <label for="email"> Email </label>
-                    <input  type="text" name="email" class="form-control" style="min-width:100px; padding: 20px;" value="<?php echo $result['email'];?>">   
-                </div>
-            </section>
-
-            <section class="row">
-                <div class="col-sm-12" style="padding:20px;">
+                <div class="col-sm-6" style="padding:20px;">
                     <label for="password"> Password</label>
                     <input type="password" name="password" class="form-control" style="min-width: 100px; padding: 20px;" value=""/>
                 </div>
-            </section>
-
-            <section class="row">
-                <div class="col-sm-12" style="padding:20px;">
+                <div class="col-sm-6" style="padding:20px;">
                     <label for="confirmPass"> Confirm Password</label>
                     <input type="password" name="confirmPass" class="form-control" style="min-width: 100px; padding: 20px;" value=""/>
                 </div>
             </section>
             
-              <section class="row">
-                <div class="col-sm-12" style="padding:20px;">
-                <label for="phone"> Phone </label>
+            <section class="row">
+                <div class="col-sm-6" style="padding:20px;">
+                    <label for="phone"> Phone </label>
                     <input type="text" name="phone" class="form-control" style="min-width: 100px; padding: 20px;" value="<?php echo $result['phone']; ?>">
+                </div>
+                <div class="col-sm-6" style="padding:20px;">
+                    <label for="paypal"> Paypal Email</label>
+                    <input  type="text" name="paypal" class="form-control" style="min-width:100px; padding: 20px;" value="<?php echo $result['paypal']; ?>">   
                 </div>
             </section>
 
-             <section class="row">
-                <div class="col-sm-12" style="padding:20px;">
-                <label for="paypal"> Paypal Email</label>
-                      <input  type="text" name="paypal" class="form-control" style="min-width:100px; padding: 20px;" value="<?php echo $result['paypal']; ?>">   
-                </div>
-            </section>
-            
             <section class="row">
-                <div class="col-sm" style="padding:20px;">
+                <div class="col-sm-5" style="padding:20px;">
                     <label for="country"> Country</label>
                     <select name="country" class="form-control" id="country">
                         <option value="<?php echo $result['country'];?>"><?php echo $result['country'];?></option>
                     </select>   
                 </div>
+                
+                <div class="col-sm-4" style="padding:20px;">
+                    <label for="city"> City</label>
+                    <input  type="text" name="city" class="form-control" style="min-width:100px; padding: 20px;" value="<?php echo $result['city']; ?>">   
+                </div>
+                
+                <div class="col-sm-3" style="padding:20px;">
+                    <label for="zipcode"> Zip Code</label>
+                    <input  type="text" name="zipcode" class="form-control" style="min-width:100px; padding: 20px;" value="<?php echo $result['zipcode']; ?>">   
+                </div>
             </section>
 
             <section class="row">
                 <div class="col-sm" style="padding:20px;">
-                    <label for="address"> Address</label>
-                    <input  type="text" name="address" class="form-control" style="min-width:100px; padding: 20px;" value="<?php echo $result['address']; ?>">   
-                </div>
-            
-                <div class="col-sm" style="padding:20px;">
-                    <label for="city"> City</label>
-                    <input  type="text" name="city" class="form-control" style="min-width:100px; padding: 20px;" value="<?php echo $result['city']; ?>">   
-                </div>
-           
-                <div class="col-sm" style="padding:20px;">
-                    <label for="zipcode"> Zip Code</label>
-                    <input  type="text" name="zipcode" class="form-control" style="min-width:100px; padding: 20px;" value="<?php echo $result['zipcode']; ?>">   
-                </div>
-            
-                <div class="col-sm" style="padding:20px;">
                     <label for="state"> State</label>
                     <select name="state" id="state" class="form-control"></select> 
                 </div>
+                <div class="col-sm" style="padding:20px;">
+                    <label for="address"> Address</label>
+                    <input  type="text" name="address" class="form-control" style="min-width:100px; padding: 20px;" value="<?php echo $result['address']; ?>">   
+                </div>
             </section>
-              <section class="row">
-
-                <div class="col-sm-4 text-center" style="padding:20px;">
-        
-                      <input type="submit" name="submit" class="btn btn-info" style="min-width:120px; padding: 20px;" value="Update Settings">    
-                    
+            <section class="row">
+                <div class="col-sm-12 text-center" style="padding:20px;">
+                    <input type="submit" name="submit" class="btn btn-info" style="min-width:120px; padding: 20px;" value="Update Settings">    
                 </div>
-                 <div class="col-sm-4 text-center" style="padding:20px;">
-        
-                       <p> </p> 
-                    
-                </div>
+                
                 <script type="text/Javascript">
                     populateCountries("country", "state");
                 </script>

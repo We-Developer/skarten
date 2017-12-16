@@ -1,5 +1,5 @@
 <section class="row">
-      <div class="col-sm-12">
+      <div class="col-sm-8" style="padding: 0;">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">

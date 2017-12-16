@@ -1,0 +1,70 @@
+
+body{
+    
+     background-image: url("../images/bg.jpeg");
+    background-size: cover;
+    
+}
+.loginContainer{
+    background-color:#f2f2f2;
+    max-width: 60%;
+    margin: auto;
+    padding:10px;
+    margin-bottom: 10%;
+    margin-top: 00px;
+}
+
+.border{
+    border: 1px solid black;
+}
+
+.formElementContainer{
+    background-color: #f2f2f2;
+    padding:10px;
+    margin:0px;
+}
+.loginBtn{
+    
+    background-color: #14ffb4;
+    color: aliceblue;
+  
+    padding:10px;
+    margin:0px;
+    min-height:20px;
+    min-width: 200px;
+    border: 4px solid #14ffb4;
+    font-weight: bold;
+    font-size: 20px;
+   
+    
+}
+
+.loginBtn:hover{
+  
+      background-color: transparent;
+     color: #14ffb4;
+     border: 4px solid #14ffb4;
+    
+}
+
+.tfLogin{
+    min-width: 300px;
+    margin: auto;
+    padding: 15px;
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.logoContainer{
+    margin-top: 10%;
+    background-color:#2d2d2d;
+     max-width: 50%;
+     min-height: 100px;
+} 
+
+.error { 
+    color: #c0392b;
+    font-size: 11px;
+    text-align: center;
+}

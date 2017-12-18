@@ -85,11 +85,23 @@ body{
 
 /*** HEADER CSS ****/
 
+.top-header {
+    width: 100%;
+}
+
+.top-header .mainLogo {
+    width: 20%;
+    padding: 8px;
+    display: inline-flex;
+}
+
 /**
     Search Form CSS
 **/
 .search {
-    min-width: 300px;
+    width: 55%;
+    display: inline-flex;
+    margin-left: 5%;
 }
 
 .search input[type=text] {
@@ -97,6 +109,7 @@ body{
     border-radius: 0px;
     font-family: 'Open Sans',sans-serif;
     font-size: 12px;
+    margin-right: 2%;
 }
 
 .search input[type=submit] {
@@ -116,10 +129,11 @@ body{
     User CSS
 **/
 .user {
-    padding: 20px 0px 20px 0px;
-    float: right;
+    display: inline-block;
     font-family: 'Lato',sans-serif;
     font-weight: 400;
+    margin-left: 8%;
+    width: 10%;
 }
 
 .user i {

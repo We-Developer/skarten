@@ -17,6 +17,7 @@
       <link rel='shortcut icon' href="data:image/png;base64,<?php echo base64_encode($row['favicon'])?>" type='image/x-icon'/ >
       <link rel="stylesheet" type="text/css" href="<?php echo $row['baseDir'];?>assets/styles/fonts.css"/>
       <link rel="stylesheet" type="text/css" href="<?php echo $row['baseDir'];?>assets/styles/stylesheet.css"/>
+      <link rel="stylesheet" type="text/css" href="<?php echo $row['baseDir'];?>assets/styles/stylesheet.responsive.css"/>
       <link rel="stylesheet" type="text/css" href="<?php echo $row['baseDir'];?>assets/styles/loginStyle.css"/>
       <link href="https://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
       <script type="text/Javascript" src="<?php echo $row['baseDir'];?>assets/country.js"></script>
@@ -43,27 +44,17 @@
     <body>
     
     <header class="row" id="main-header" style="background-color: #f4f4f4; margin-left:0px; margin-right:0px;">
-
-      <div class="col-sm-3">
+      <div class="top-header">
         <a href="<?php echo $row['baseDir']; ?>" alt="Home">
-          <div class="col-sm-3">
-            <a href="<?php echo $row['baseDir']; ?>" alt="Home">
-              <img style="width:300px; padding:8px;" src="data:image/png;base64,<?php echo base64_encode($row['logo'])?>"/>
-            </a>
-          </div>
+          <img src="data:image/png;base64,<?php echo base64_encode($row['logo'])?>" class="mainLogo"/>
         </a>
-      </div>
-      <form action="search.php" method="POST" class="search">
-        <div style="padding: 20px;" class=" col-xs-5">
-          <input type="text" class="form-control" style="min-height:200%; padding: 20px;" placeholder="Search">   
-        </div>
         
-        <div style="padding:20px 0px 20px 0px;" class=" col-sm-1">      
-          <input style="min-height:40px;" type="submit" class="btn btn-alert" value="Search">
-        </div>
-      </form>
-        <div class="col-sm-2" style="float: right;">
-          <div class="user">
+        <form action="search.php" method="POST" class="search">
+          <input type="text" id="searchTerm" class="form-control" style="min-height:200%; padding: 20px;" placeholder="Search">   
+          <input style="min-height:40px;" type="submit" class="btn btn-alert" value="Search" id="searchBtn">
+        </form>
+
+        <div class="user">
           <?php
             if($user->is_logged_in()) {
               echo "<div class='right'>";

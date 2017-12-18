@@ -13,7 +13,7 @@
             ':username' => $_SESSION['userName']
         ));
         $role = $stmt->fetch(PDO::FETCH_ASSOC);
-        if($role['role'] != 0) {
+        if($role['role'] != 5) {
             header ('Location: index');
         }
     }

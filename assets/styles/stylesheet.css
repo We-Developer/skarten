@@ -83,6 +83,22 @@ body{
     
 } 
 
+/*** Link CSS ***/
+
+.link {
+    padding: 10px;
+    background-color: rgba(0,230,64,0.8);
+    font-family: 'Poppins',sans-serif;
+    font-size: 11px;
+    color: rgba(255,255,255,1);
+}
+
+.link:hover {
+    background-color: rgba(0,230,64,1);
+    color: rgba(255,255,255,1);
+    text-decoration: none;
+}
+
 /*** HEADER CSS ****/
 
 .top-header {
@@ -548,15 +564,6 @@ footer { background-color:#0c1a1e; min-height:350px; font-family: 'Open Sans', s
     text-align: center;
 }
 
-.cart-content .empty a {
-    color: rgba(0,176,59,1);
-}
-
-.cart-content .empty a:hover {
-    text-decoration: none;
-    color: rgba(0,176,59,1);
-}
-
 .cart-content .row {
     padding-top: 3%;
     padding-bottom: 3%;
@@ -598,6 +605,61 @@ footer { background-color:#0c1a1e; min-height:350px; font-family: 'Open Sans', s
     font-size: 10px;
     color: rgba(0,230,64,0.8);
 }
+/*** End of Cart***/
+
+/*** Form CSS ***/
+
+textarea {
+    resize: none;
+}
+
+/*** Wishlist CSS ***/
+
+.wishlist {
+    margin: 0 auto;
+    font-family: 'Poppins',sans-serif;
+}
+
+.wishlist h3 {
+    text-align: center;
+}
+
+.wishlist table {
+    margin: 0 auto;
+    width: 70%;
+    border: 1px solid #ccc;
+}
+
+.wishlist table th {
+    width: 33%;
+    font-size: 18px;
+    padding: 2%;
+    border: 1px solid #ccc;
+}
+
+.wishlist table td {
+    width: 33%;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    padding: 3%;
+}
+
+.wishlist table a {
+    background-color: rgba(0,230,64,0.8);
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.wishlist table a:hover {
+    background-color: rgba(0,230,64,1);
+    text-decoration: none;
+}
+
+
+/*** End of Wishlist ***/
+
+
 /**** Main Page ****/
 /** Main Content **/
 

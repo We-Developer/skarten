@@ -2,16 +2,19 @@
     include('includes/header.php');
 
     if(!$user->is_logged_in()) {
-        header ('Location: index.php');
+        header ('Location: index');
     }
     if($user->is_logged_in()) {
+        if($user->isLoginSessionExpired()) {
+            header('Location: logout.php');
+        }
         $stmt = $dbConnection->prepare('SELECT role FROM user WHERE username = :username');
         $stmt->execute(array(
             ':username' => $_SESSION['userName']
         ));
         $role = $stmt->fetch(PDO::FETCH_ASSOC);
         if($role['role'] != 0) {
-            header ('Location: index.php');
+            header ('Location: index');
         }
     }
     if(isset($_POST['submit'])) {

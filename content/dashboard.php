@@ -5,6 +5,10 @@
 <?php 
     if($user->is_logged_in()) {
 
+        if($user->isLoginSessionExpired()) {
+            header('Location: ../logout.php');
+        }
+
         try {
             $stm = $dbConnection->prepare('SELECT username,avatar,name,email,paypal,phone,country,state,city,address,zipcode,registered,role FROM user WHERE username = :username');
             $stm->execute(array(':username' => $_SESSION['userName']));
@@ -15,17 +19,12 @@
             }
             ?>
             <center>
-    <br />
-    <br />
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-1">
-                <p></p>
-            </div>
             <div class="col-sm" style="">
                 <div class="dashboard">
                     <div class="left">
-                        <div class="profileImage" style="background: url(<?php echo $row['baseDir'];?>assets/images/person.jpeg); background-size: cover;">
+                        <div class="profileImage" style="background: url(<?php echo $row['baseDir'];?>content/<?php echo $userData['avatar'];?>); background-size: cover;">
                         <!--<img src="data:image/jpg;base64,<?php echo base64_encode(stream_get_contents($userData['avatar']))?>" alt="Avatar of <?php echo $userData['name']; ?>" class="avatar"/>-->
                         <div class="info">
                         <h1><?php echo $userData['name']; ?></h1>
@@ -78,7 +77,7 @@
                                 All your past orders in one place
                             </p>
                         </div>
-                        <a href="<?php echo $row['baseDir']; ?>content/editProfile" alt="Edit Your Profile">
+                        <a href="<?php echo $row['baseDir']; ?>content/edit-profile" alt="Edit Your Profile">
                             <div class="card">
                                 <i class="fa fa-user-o fa-5x icon" aria-hidden="true"></i>
                                 <h2>Edit Profile</h2>
@@ -112,7 +111,7 @@
                         <?php
                             if($user->role() == 2) {
                         ?>
-                                <a href="<?php echo $row['baseDir']; ?>content/seller" alt="Become a Seller">
+                                <a href="<?php echo $row['baseDir']; ?>content/dashboard-seller" alt="Seller Dashboard">
                                     <div class="card-small text-center">
                                         <h2>Seller</h2>
                                         <p>Seller Dashboard</p>
@@ -122,7 +121,7 @@
                         <?php
                             } else {
                         ?>
-                                <a href="<?php echo $row['baseDir']; ?>content/dashboard-seller" alt="Become a Seller">
+                                <a href="<?php echo $row['baseDir']; ?>content/seller-registration" alt="Become a Seller">
                                     <div class="inactive card-small text-center">
                                         <h2>Seller</h2>
                                         <p>Become a Seller</p>
@@ -151,9 +150,6 @@
                 </div>
                 </div>
                 
-            <div class="col-sm-1">
-                <p></p>
-            </div>
         </div>
     </div>
     </center>

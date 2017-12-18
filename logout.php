@@ -12,6 +12,13 @@
         $user->logout();
         header('Location: index');
     }
+
+    if(isset($_GET['session_expired'])) {
+        if($_GET['session_expired'] == 1) {
+            $user->logout();
+            header('Location: index');
+        }
+    }
 ?>
 
 

@@ -145,7 +145,6 @@ body{
 /** Navigation CSS **/
 
 nav {
-    padding: 10px;
     overflow: hidden;
     font-family: 'Lato',sans-serif;
     font-weight: 400;
@@ -170,6 +169,7 @@ nav .right {
 nav ul {
     list-style-type: none;
     margin: 5px;
+    font-size:10px;
 }
 
 nav .right ul li {
@@ -181,11 +181,13 @@ nav .right ul li {
 }
 
 nav .right ul li i {
-    color: rgba(4,147,114,1);
+    color: rgba(0,200,83 ,1);
+    transition: 0.1s ease-in-out;
 }
 
 nav .right ul li i:hover {
-    color: rgba(4,147,114,0.6);
+    color: rgba(4,147,114,0.7);
+    transform: scale(1.05,1.05);
 }
 
 nav .left ul li {
@@ -212,7 +214,21 @@ nav .left ul li a:hover {
     text-decoration: none;
 }
 
+.navbar-fixed {
+    top: 0;
+    z-index: 100;
+  position: fixed;
+    width: 100%;
+}
 
+.navbar-fixed ul {
+    font-size: 8px;
+    margin: 2px;
+}
+
+.navbar-fixed .left {
+    display: none;
+}
 
 /** End of Navigation **/
 
@@ -297,10 +313,24 @@ footer { background-color:#0c1a1e; min-height:350px; font-family: 'Open Sans', s
 .bottom_ul li:after { content:"/"; color:#FFF; margin-right:8px; margin-left:8px;}
 .bottom_ul li a { color:#FFF;  font-size:12px;}
 
+
+/******** BOOTSTRAP CSS - Overriding ***********/
+
+.container-fluid {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
 /***** Dashboard CSS *****/
 
 .dashboard {
-    width: 95%;
+    width: 100%;
     background-color: rgba(255,255,255,1);
     overflow: hidden;
     font-family: 'Khula',sans-serif;
@@ -314,7 +344,7 @@ footer { background-color:#0c1a1e; min-height:350px; font-family: 'Open Sans', s
 
 .dashboard .left {
     float: left;
-    width: 40%;
+    width: 30%;
     -webkit-box-shadow: 2px 0px 10px 0px rgba(0,0,0,0.25);
     -moz-box-shadow: 2px 0px 10px 0px rgba(0,0,0,0.25);
     box-shadow: 2px 0px 10px 0px rgba(0,0,0,0.25);
@@ -356,13 +386,13 @@ footer { background-color:#0c1a1e; min-height:350px; font-family: 'Open Sans', s
 
 .dashboard .right {
     float: right;
-    width: 55%;
+    width: 70%;
     padding: 25px;
 }
 
 /** Dashboard Card CSS **/
 .dashboard .card {
-    width: 40%;
+    width: 30%;
     border-radius: 2px;
     -webkit-box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.08);
     -moz-box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.08);
@@ -456,12 +486,110 @@ footer { background-color:#0c1a1e; min-height:350px; font-family: 'Open Sans', s
     background-color:rgba(0,0,0,0.15);
 }
 
+/*** Cart CSS ***/
+
+.cart-content {
+    width: 100%;
+    background-color: rgba(255,255,255,1);
+    overflow: hidden;
+    font-family: 'Poppins',sans-serif;
+    padding: 20px;
+}
+
+.cart-content h1 {
+    font-size: 24px;
+    text-align: center;
+}
+
+.cart-content h3 {
+    font-size: 14px;
+}
+
+.cart-content button {
+    font-size: 14px;
+}
+
+.cart-content .left {
+    float: left;
+    width: 80%;
+}
+
+.cart-content ul {
+    list-style-type: none;
+    font-size: 12px;
+}
+
+.cart-content ul li {
+    
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.cart-content .right {
+    float: right;
+    width: 20%;
+}
+
+.cart-content .empty {
+    text-align: center;
+}
+
+.cart-content .empty a {
+    color: rgba(0,176,59,1);
+}
+
+.cart-content .empty a:hover {
+    text-decoration: none;
+    color: rgba(0,176,59,1);
+}
+
+.cart-content .row {
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+#addcoupon {
+    padding: 10px;
+    border: 1px solid rgba(189, 195, 199,1.0);
+    text-align: center;
+}
+
+#addcoupon h3 {
+    font-size: 14px;
+}
+
+#addcoupon p {
+    font-size: 11px;
+}
+
+#addcoupon input {
+    padding: 10px;
+    margin: 10px;
+    font-size: 10px;
+    width: 90%;
+}
+
+#addcoupon input[type=text] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    
+}
+
+#addcoupon .error {
+    font-size: 10px;
+    color: #c0392b;
+}
+
+#addcoupon .success {
+    font-size: 10px;
+    color: rgba(0,230,64,0.8);
+}
 /**** Main Page ****/
 /** Main Content **/
 
 .content {
     background-color: rgba(255,255,255,1);
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -536,16 +664,69 @@ footer { background-color:#0c1a1e; min-height:350px; font-family: 'Open Sans', s
 
 /*** Form Data ***/
 .data {
-    width: 100%;
+    width: 70%;
+    margin: 0 auto;
     padding: 50px;
-    font-family: 'Poppins',sans-serif;
+    font-family: 'Khula',sans-serif;
 }
 
 .data h1 {
-    font-size: 40px;
+    font-size: 48px;
     text-align: center;
 }
 
 .data input {
     border-radius: 0px;
+}
+
+.data .inputAvatar {
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.data .inputAvatar + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    background-color: black;
+    display: inline-block;
+}
+
+.data .inputAvatar:focus + label,
+.data .inputAvatar + label:hover {
+    background-color: red;
+}
+
+.data .inputAvatar + label {
+	cursor: pointer; /* "hand" cursor */
+}
+
+/**** AVATAR CSS ****/
+
+.avatar-tiny {
+    width: 20%;
+    border-radius: 150px;
+    margin: 0;
+    padding: 0;
+    float:right;
+}
+
+.avatar-tiny:hover {
+    opacity: 0.7;
+}
+
+/*** Buttons ***/
+
+.btn {
+    border-radius: 0px;
+    border: 0px;
+    background-color: rgba(0,230,64,0.8);
+}
+
+.btn:hover {
+    background-color: rgba(0,230,64,1.0);
 }

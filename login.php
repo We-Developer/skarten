@@ -15,7 +15,7 @@
         $password = $_POST['password'];
         if($user->login($username,$password)) {
             
-            header('Location: index');
+            header('Location: content/dashboard.php');
             exit;
             
         } else {

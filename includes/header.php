@@ -51,7 +51,7 @@
               echo "<a href='".$row['baseDir']."content/dashboard'>DASHBOARD</a><br><a href='".$row['baseDir']."logout'>LOGOUT</a>";
             } else {
               echo "<a href='".$row['baseDir']."login'><i class='fa fa-user-circle-o fa-3x' aria-hidden='true'></i></a>";
-              echo "<a href='".$row['baseDir']."register'>SIGN UP</a><br><a href='".$row['baseDir']."login'>LOGIN</a>";
+              echo "<a href='".$row['baseDir']."register.php'>SIGN UP</a><br><a href='".$row['baseDir']."login.php'>LOGIN</a>";
             }
           ?>
         </div>
@@ -65,7 +65,7 @@
         <div class="left">
             <ul>
               <li><a href="<?php echo $row['baseDir']; ?>content/cat" alt="Product Categories">Categories</li>
-              <li><a href="<?php echo $row['baseDir']; ?>register" alt="Become a Seller">Sell</a></li>
+              <li><a href="<?php echo $row['baseDir']; ?>register.php" alt="Become a Seller">Sell</a></li>
             </ul>
         </div>
         <!-- Content Float to Left-->

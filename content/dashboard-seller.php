@@ -26,12 +26,12 @@ if($user->is_logged_in()){ ?>
 
     <div class="row ">
         <div class="col-sm-2 jumbotron" style="background-color:lavender;">
-            <button type="button" class="btn btn-primary btn-block">Your add</button>
-            <button type="button" class="btn btn-primary btn-block">Add new</button>
-            <button type="button" class="btn btn-primary btn-block">Remove add </button>
+            <a type="button"  class="btn btn-primary btn-block">Your add</a>
+            <a type="button" href="addItem.php" class="btn btn-primary btn-block">Add new</a>
+            <a type="button" class="btn btn-primary btn-block">Remove add </a>
         </div>
         <div class="col-sm-10 jumbotron" style="background-color:lavenderblush;">
-            hghf
+            <?php include 'viewItems.php'?>
         </div>
     </div>
 </div>

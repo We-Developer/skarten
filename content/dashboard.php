@@ -110,7 +110,7 @@
                         </div>
 
                         <?php
-                            if($user->role() == 2) {
+                            if($user->role() == 1) {
                         ?>
                                 <a href="<?php echo $row['baseDir']; ?>content/seller" alt="Become a Seller">
                                     <div class="card-small text-center">

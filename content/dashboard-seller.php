@@ -26,7 +26,7 @@ if($user->is_logged_in()){ ?>
 
     <div class="row ">
         <div class="col-sm-2 jumbotron" style="background-color:lavender;">
-            <a type="button"  class="btn btn-primary btn-block">Your add</a>
+            <a type="button"  class="btn btn-primary btn-block" id="yourAdd">Your add</a>
             <a type="button" href="addItem.php" class="btn btn-primary btn-block">Add new</a>
             <a type="button" class="btn btn-primary btn-block">Remove add </a>
         </div>
@@ -49,6 +49,12 @@ if($user->is_logged_in()){ ?>
 
 
 <script>
+document.getElementById('yourAdd').addEventListener('click', function(){
+    window.alert("hi");
+                                                       
+});    
+    
+    
 $(document).ready(function(){
   // Add smooth scrolling to all links in navbar + footer link
   $(".navbar a, footer a[href='#myPage']").on('click', function(event) {

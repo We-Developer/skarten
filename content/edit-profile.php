@@ -11,13 +11,45 @@
 
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    $image = false;
+    $actual_image_name = "";
+    $path = "uploads/";
+    $valid_formats = array("jpg", "png", "gif", "bmp","jpeg");
     
+
     if(isset($_POST['submit'])) {
         if(!($_POST['name'] === null)) {
             
             $active = 1;
             
+            
             $avatar = $result['avatar'];
+            
+            $name = $_FILES['avatar']['name'];
+            $size = $_FILES['avatar']['size'];
+            
+            if (!empty($_FILES["avatar"]["name"])) {
+
+                if(strlen($name)) {
+                    list($txt,$ext) = explode(".", $name);
+                    
+                    if(in_array($ext,$valid_formats)) {
+                        if($size < (1024*5120)) {
+                            $image_name = time().$_SESSION['userName'].".".$ext;
+
+                            if(move_uploaded_file($_FILES['avatar']['tmp_name'], $path.$image_name)) {
+                                $avatar = $path.$image_name;
+                                unlink($result['avatar']);
+                                echo $avatar;
+                            } else 
+                                echo "Failed";
+                        } else 
+                            echo "File Size Man 5MB";
+                    } else 
+                        echo "Invalid File Formart";
+                } else 
+                    echo "Please Select an Image";
+            }
             
             if(empty($_POST['name'])) {
                 $name = $result['name'];
@@ -79,32 +111,6 @@
                 $zipcode = $_POST['zipcode'];
             }
 
-            if($_FILES['avatar']['size'] != 0) {
-                $error = false;
-                $maxsize = 10485760;
-                $acceptable = array(
-                    'image/jpeg',
-                    'image/jpg',
-                    'image/gif',
-                    'image/png'
-                );
-
-                if($_FILES['avatar']['size'] > $maxsize || $_FILES['avatar']['size'] == 0) {
-                    echo '<div class="error">File Size too large</div>';
-                    $error = true;
-                }
-
-                if((!in_array($_FILES['avatar']['type'], $acceptable)) && (!empty($_FILES["avatar"]["type"]))) {
-                    echo '<div class="error">Invalid file type. Only JPG, GIF and PNG types are accepted.</div>';
-                    $error = true;
-                }
-
-                if($error != true) {
-                    $avatar = addslashes(file_get_contents($_FILES['avatar']['tmp_name']));
-                }
-
-            }
-
             try {
                 $stmt = $dbConnection->prepare('SELECT email FROM user WHERE username = :username');
                 $stmt->execute(array(
@@ -138,6 +144,7 @@
             try {
             //update into database
                 if($active == 0) {
+                    
 					$stmt = $dbConnection->prepare('UPDATE user SET password = :password, hash = :hash, avatar = :avatar, name = :name, email = :email, paypal = :paypal, phone = :phone, country = :country, state = :state, city = :city, address = :address, zipcode = :zipcode, emailVerify = :emailVerify WHERE username = :username') ;
 					$stmt->execute(array(
                         ':password' => $password,
@@ -157,7 +164,9 @@
                     ));
 
                     $user->email_verify($email,$_SESSION['userName'],$hash);
+                    $_SESSION['avatar'] = $avatar;
                 } else {
+                    
                     $stmt = $dbConnection->prepare('UPDATE user SET password = :password, avatar = :avatar, name = :name, email = :email, paypal = :paypal, phone = :phone, country = :country, state = :state, city = :city, address = :address, zipcode = :zipcode WHERE username = :username');
                     $stmt->execute(array(
                         ':password' => $password,
@@ -173,6 +182,7 @@
                         ':zipcode' => $zipcode,
                         ':username' => $_SESSION['userName']
                     ));
+                    $_SESSION['avatar'] = $avatar;
                 }
                     $success = true;
                 } catch (PDOException $e) {
@@ -180,9 +190,8 @@
                 }
         }
     }
-
-
 ?>
+
 <script type="text/Javascript">
     function validateForm() {
             var div = document.getElementById("error");
@@ -229,16 +238,17 @@
             <form method="POST" action="" name="update" enctype="multipart/form-data" onsubmit="return validateForm()" class="data">
                 
             <section class="row">
+
+                <div class="col-sm-12" style="padding:20px;">
+                    <h1 >Update Profile</h1>
+                    
                 <?php
                     if(isset($success)) {
                         if($success == true) {
-                            echo "<h1>Updated</h1>";
+                            echo "<h2>Profile Updated Successfully!</h2>";
                         }
                     }
                 ?>
-
-                <div class="col-sm-12" style="padding:20px;">
-                    <h1 >Settings</h1>
                 </div>
                 <div class="error" id="errorForm"></div>
             </section>
@@ -247,6 +257,12 @@
                 <div class="col-sm-8" style="padding:20px;">
                     <label for="image"> Avatar</label>
                     <input type="file" name="avatar"/>
+                    <?php
+                        if($result['avatar'] != "") {
+                            echo '<img src="'.$result["avatar"].'" alt="useravatar" style="width: 20%; margin-top: 2%;"/>';
+
+                        }
+                    ?>
                 </div>
             </section>
             <section class="row">

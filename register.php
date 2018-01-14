@@ -1,5 +1,12 @@
 <?php
     include('includes/config.php');
+
+    if($user->is_logged_in()) {
+        if($user->isLoginSessionExpired()) {
+            header('Location: logout.php');
+        }
+        header('Location: index.php');
+    }
 ?>
 <html lang="en">
     <head>
@@ -55,6 +62,67 @@
                 }
 
             }
+
+            function usernameDB() {
+
+                var username = document.getElementById("usernametxt").value;
+
+                var xhr;
+                if (window.XMLHttpRequest) { // Mozilla, Safari, ...
+                    xhr = new XMLHttpRequest();
+                } else if (window.ActiveXObject) { // IE 8 and older
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+    
+                var data = "username=" + username;
+	
+                xhr.open("POST", "includes/username-validate.php", true); 
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");                  
+                xhr.send(data);
+                xhr.onreadystatechange = display_data;
+
+                function display_data() {
+	                if (xhr.readyState == 4) {
+                        if (xhr.status == 200) {
+                            document.getElementById("usernameerror").innerHTML = xhr.responseText;
+                        } else {
+                            alert('There was a problem with the request.');
+                        }
+                    }
+                }  
+
+            }
+
+            function emailDB() {
+
+                var email = document.getElementById("emailtxt").value;
+
+                var xhr;
+                if (window.XMLHttpRequest) { // Mozilla, Safari, ...
+                    xhr = new XMLHttpRequest();
+                } else if (window.ActiveXObject) { // IE 8 and older
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+    
+                var data = "email=" + email;
+	
+                xhr.open("POST", "includes/email-validate.php", true); 
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");                  
+                xhr.send(data);
+                xhr.onreadystatechange = display_data;
+
+                function display_data() {
+	                if (xhr.readyState == 4) {
+                        if (xhr.status == 200) {
+                            document.getElementById("emailerror").innerHTML = xhr.responseText;
+                        } else {
+                            alert('There was a problem with the request.');
+                        }
+                    }
+                }  
+
+            }
+
         </script>
     </head>
     <body>
@@ -154,11 +222,13 @@
                             </div>
 
                             <div class="formElementContainer">
-                                <input name="email" type="text" class="tfLogin" placeholder="Email" required>   
+                                <input name="email" type="text" class="tfLogin" placeholder="Email" onKeyUp='emailDB()' id='emailtxt' required>
+                                <div id='emailerror' class='error'></div>
                             </div>
                     
                             <div class="formElementContainer">
-                                <input name="username" type="text" class="tfLogin" placeholder="Username" required>   
+                                <input name="username" type="text" class="tfLogin" placeholder="Username" onKeyUp='usernameDB()' id='usernametxt' required>
+                                <div id='usernameerror' class='error'></div>
                             </div>
                     
                             <div class="formElementContainer">

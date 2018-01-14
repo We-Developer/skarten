@@ -46,7 +46,7 @@ class User extends Password{
 		if($this->password_verify($password,$hashed) == 1){
 			
 			try {
-				$stmt = $this->_db->prepare('SELECT emailVerify FROM user WHERE username = :username');
+				$stmt = $this->_db->prepare('SELECT avatar,emailVerify FROM user WHERE username = :username');
 				$stmt->execute(array('username' => $username));
 
 				$row = $stmt->fetch();
@@ -54,6 +54,12 @@ class User extends Password{
 				if($row['emailVerify'] == 1) {
 					$_SESSION['loggedin'] = true;
 					$_SESSION['userName'] = $username;
+					$_SESSION['avatar'] = $row['avatar'];
+					$_SESSION['loginTime'] = time();
+					
+					//ini_set('session.use_only_cookies', TRUE);				
+					//ini_set('session.use_trans_sid', FALSE);
+					//ini_set('session.cookie_lifetime', 5);
 					return true;
 				} else {
 					
@@ -69,7 +75,20 @@ class User extends Password{
 	
 	#Destroy the user's current session if the user logs out
 	public function logout(){
+		session_unset();
 		session_destroy();
+	}
+
+	#Logout if the user's current session has expired - time limit reached
+	function isLoginSessionExpired() {
+		$login_session_duration = 1200; 
+		$current_time = time(); 
+		if(isset($_SESSION['loginTime']) and isset($_SESSION["userName"])){  
+			if(((time() - $_SESSION['loginTime']) > $login_session_duration)){ 
+				return true; 
+			} 
+		}
+		return false;
 	}
 
 	public function email_verify($email,$name,$hash) {
@@ -86,7 +105,7 @@ class User extends Password{
 		------------------------
 		 
 		Please click this link to activate your account:
-		localhost:8081/skarten-ecommerce/verify.php?email='.$email.'&hash='.$hash.'
+		<a href="localhost:8081/skarten-ecommerce/verify.php?email='.$email.'&hash='.$hash.'" alt="Verification Link">localhost:8081/skarten-ecommerce/verify.php?email='.$email.'&hash='.$hash.'</a>
 		 
 		'; // Our message above including the link
 							 

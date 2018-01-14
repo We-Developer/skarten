@@ -4,7 +4,9 @@
 
 <?php 
     if($user->is_logged_in()) {
-
+        if($user->isLoginSessionExpired()) {
+            header('Location: logout.php');
+        }
         try {
             $stm = $dbConnection->prepare('SELECT username,avatar,name,email,paypal,phone,country,state,city,address,zipcode,registered,role FROM user WHERE username = :username');
             $stm->execute(array(':username' => $_SESSION['userName']));

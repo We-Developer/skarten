@@ -1,0 +1,82 @@
+/***
+CSS to enable the website to display properly in different screen sizes
+***/
+
+/*Screen Width of Upto 1280px*/
+@media only screen and (max-width: 1280px) {
+    
+    .user {
+        font-size: 14px;
+        margin-left: 4%;
+        width: 15%;
+    }
+    .search {
+
+    }
+
+}
+
+/*Screen Width of Upto 960px*/
+@media only screen and (max-width: 960px) {
+
+    .user {
+        font-size: 11px;
+        margin-left: 1%;
+    }
+
+    .search input[type=text] {
+        border-radius: 0px;
+        font-family: 'Open Sans',sans-serif;
+        font-size: 10px;
+        margin-right: 2%;
+    }
+
+}
+
+/*Screen Width of Upto 768px*/
+@media only screen and (max-width: 768px) {
+
+    .top-header .mainLogo {
+        display: block;
+        text-align: center;
+        margin: 0 auto;
+        width: 40%;
+    }
+        
+    .user {
+        display: block;
+        font-size: 11px;
+        margin: 0 auto;
+        width: 30%;
+        padding-top: 5%;
+        padding-bottom: 5%;
+    }
+    
+    .search {
+        display: block;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .search input {
+        margin-top: 2%;
+        margin-bottom: 2%;
+    }
+
+    .search input[type=text] {
+        border-radius: 0px;
+        font-family: 'Open Sans',sans-serif;
+        font-size: 10px;
+        margin-right: 2%;
+        height: 10%;
+    }
+
+}
+    
+
+/*Screen Width of Upto 768px*/
+@media only screen and (max-width: 320px) {
+
+    
+
+}

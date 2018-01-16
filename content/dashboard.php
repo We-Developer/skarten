@@ -121,7 +121,7 @@
                         <?php
                             } else {
                         ?>
-                                <a href="<?php echo $row['baseDir']; ?>content/seller-registration" alt="Become a Seller">
+                                <a href="<?php echo $row['baseDir']; ?>content/dashboard-seller" alt="Become a Seller">
                                     <div class="inactive card-small text-center">
                                         <h2>Seller</h2>
                                         <p>Become a Seller</p>
@@ -135,7 +135,7 @@
                         <?php
                             if($user->role() == 5) {
                         ?>
-                                <a href="<?php echo $row['baseDir']; ?>admin" alt="Administrator Panel">
+                                <a href="<?php echo $row['baseDir']; ?>admin/index.php" alt="Administrator Panel">
                                     <div class="card-wide text-center">
                                         <i class="fa fa-lock fa-4x" aria-hidden="true" style="display: inline-block; width: 20%;"></i>
                                         <div style="display: inline-block; width: 70%;">

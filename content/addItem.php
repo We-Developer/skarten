@@ -32,7 +32,7 @@
                         <div class="col-sm-12" style="padding:20px;">
 
                             <p id="formp"> Name of the product </p>
-                            <input  type="text" class="form-control" style="min-width:100px; padding: 20px;" placeholder="" required>   
+                            <input  type="text" class="form-control" style="min-width:100px; padding: 20px;" placeholder="Name of the product" required="">   
 
                         </div>
 
@@ -44,7 +44,7 @@
 
                         <div class="col-sm-12" style="padding:20px;">
                                 <p id="formp">Price </p>
-                              <input  type="text" class="form-control" style="min-width:100px; padding: 20px;" placeholder="$" required>   
+                              <input  type="text" class="form-control" style="min-width:100px; padding: 20px;" placeholder="$" required="">   
 
                         </div>
 
@@ -57,7 +57,7 @@
                         <div class="col-sm-12" style="padding:20px;">
 
                             <p id="formp"> Upload Picture</p>
-                            <input  type="file" class="" style="min-width:100px; padding: 2px;" placeholder="Upload" required>   
+                            <input  type="file" class="" style="min-width:100px; padding: 2px;" placeholder="Upload" required="">   
 
                         </div>
 
@@ -69,7 +69,7 @@
 
                         <div class="col-sm-12" style="padding:20px;">
                            <p id="formp"> Description</p>
-                              <input  type="text" class="form-control" style="min-width:100px; padding: 20px;" placeholder="" required>   
+                              <input  type="text" class="form-control" style="min-width:100px; padding: 20px;" placeholder="Description" required="">   
 
                         </div>
 

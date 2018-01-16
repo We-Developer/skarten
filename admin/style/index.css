@@ -1,0 +1,38 @@
+.content{
+    background-color:#2f2b30;
+    height:700px;
+}
+
+/*
+.content{
+    background-color:#ede9e8;
+    height: 700px;
+}
+*/
+
+/*
+.content a:hover{
+    background-color: #2f2b30;
+}
+
+body{
+    background-color:#ede9e8; 
+}
+*/
+
+.header1{
+    height: 58px;
+    background-color: aliceblue;
+}
+
+/*
+.header2{
+    height: 59px;
+    background-color: #ede9e8;
+}
+
+.header3{
+    height: 59px;
+    background-color: #ede9e8;
+}
+*/

@@ -1,0 +1,74 @@
+
+body{
+    background-image: url("../images/bg2.jpeg");
+    background-size: cover;
+}
+
+.formContainer{
+    font-family: 'Open Sans',serif;
+    background-color:#f2f2f2;
+    max-width: 600px;
+    margin: auto;
+    padding:10px;
+    margin-bottom: 10px;
+}
+
+.formContainer h1 {
+    font-size: 32px;
+    font-family: 'Lato',sans-serif;
+    font-weight: 400;
+    color: rgba(0,0,0,0.4);
+    letter-spacing: 5px;
+}
+
+.border{
+    border: 1px solid black;
+}
+
+.formElementContainer{
+    background-color: #f2f2f2;
+    padding:10px;
+    margin:0px;
+    font-size: 12px;
+}
+
+.btn{
+    background-color: #14ffb4;
+    color: aliceblue;
+    padding:10px;
+    margin:0px;
+    min-height:20px;
+    min-width: 200px;
+    border: 4px solid #14ffb4;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.btn:hover{
+    background-color: transparent;
+    color: #14ffb4;
+    border: 4px solid #14ffb4;
+}
+
+input[type=text],input[type=password] {
+    min-width: 300px;
+    margin: auto;
+    padding:15px;
+}
+
+.logoContainer{
+    margin-top: 110px;
+    background-color:#2d2d2d;
+    max-width: 600px;
+    min-height: 100px;
+} 
+
+input[type=checkbox],input[type=radio] {
+    min-width: 5%;
+}
+
+.error { 
+    color: #c0392b;
+    font-size: 11px;
+    text-align: center;
+}

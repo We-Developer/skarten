@@ -1,24 +1,25 @@
 <?php
-    include '../includes/header.php'
+
+$connect=mysqli_connect("localhost","root","","skartendb");
+
 ?>
 
 <section class="row"><!--products section-->
     <div class="container"> 
 
       <?php
-//        $query=" SELECT * FROM products ORDER BY id ASC";
-//        $result=mysqli_query($connect,$query);
-//
-//        if(mysqli_num_rows($result)>0){
-//          while ($row=mysqli_fetch_array($result)) {
-//              
-//          }
-//        }
+        $query=" SELECT * FROM products ORDER BY id ASC";
+        $result=mysqli_query($connect,$query);
+
+        if(mysqli_num_rows($result)>0){
+          while ($row=mysqli_fetch_array($result)) {
       ?>
                
         <div class="">
+
             <div class="jumbotron text-center">
-<!--
+
+
               <form method="post" action="index.php?action=add&id=<?php echo $row["id"]; ?>"> 
                 <h4> <?php echo $row[1]; ?> </h4>         
                 <center>
@@ -33,14 +34,23 @@
                 <button type="button" class="btn btn-success">Buy</button>
 
               </form>   
--->
 
-            </div>    
-        </div>
+            </div>
+      
+  
+     <?
+
+            
+          }
+        }
+
+      ?>           
+
+    
     </div>
+      
 </section>
 
 
-<?php
-    include '../includes/footer.php';
-?>
+
+

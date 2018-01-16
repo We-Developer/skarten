@@ -1,5 +1,5 @@
 <section class="row">
-      <div class="col-sm-8" style="padding: 0;">
+      <div class="col-sm-12">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
@@ -11,15 +11,15 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
           <div class="item active">
-            <img src="<?php echo $row['baseDir'];?>assets/images/img1.png" alt="Los Angeles" style="width:100%;">
+            <img src="public/images/img1.png" alt="Los Angeles" style="width:100%;">
           </div>
 
           <div class="item">
-            <img src="<?php echo $row['baseDir'];?>assets/images/img1.png" alt="Chicago" style="width:100%;">
+            <img src="public/images/img1.png" alt="Chicago" style="width:100%;">
           </div>
 
           <div class="item">
-            <img src="<?php echo $row['baseDir'];?>assets/images/img1.png" alt="New york" style="width:100%;">
+            <img src="public/images/img1.png" alt="New york" style="width:100%;">
           </div>
         </div>
 

@@ -1,0 +1,10 @@
+ALTER TABLE product ADD postedBy int NOT NULL;
+
+TRUNCATE TABLE product
+
+TRUNCATE TABLE user
+
+ALTER TABLE product ADD CONSTRAINT FK_Seller FOREIGN KEY (postedBy) REFERENCES User(id)
+
+
+UPDATE user SET emailVerify=1,role=5 WHERE id=1

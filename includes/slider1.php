@@ -1,26 +1,60 @@
 <section class="row">
-      <div class="col-sm-8" style="padding: 0;">
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <div class="col-sm-12" style="padding: 0;">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" style="-webkit-box-shadow: 0px 7px 43px -1px rgba(0,0,0,0.37);
+-moz-box-shadow: 0px 7px 43px -1px rgba(0,0,0,0.37);
+box-shadow: 0px 7px 43px -1px rgba(0,0,0,0.37);">
         <!-- Indicators -->
         <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
+          <?php
+
+            $i = 0;
+            $stmt = $dbConnection->prepare('SELECT * FROM slides WHERE active = :active');
+            $stmt->execute(array(
+              ":active" => 1
+            ));
+            $count = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            for($i = 0; $i < count($count); $i++) {
+              if($i == 0) {
+                echo "<li data-target='#myCarousel' data-slide-to'".$i."' class='active'></li>";
+              } else {
+                echo "<li data-target='#myCarousel' data-slide-to'".$i."'></li>";
+              }
+            }
+
+          ?>
         </ol>
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
-          <div class="item active">
-            <img src="<?php echo $row['baseDir'];?>assets/images/img1.png" alt="Los Angeles" style="width:100%;">
-          </div>
+          <?php
 
-          <div class="item">
-            <img src="<?php echo $row['baseDir'];?>assets/images/img1.png" alt="Chicago" style="width:100%;">
-          </div>
+            $stmt = $dbConnection->prepare('SELECT * FROM slides WHERE active = :active ORDER BY posted DESC');
+            $stmt->execute(array(
+              ":active" => 1
+            ));
+            $slides = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-          <div class="item">
-            <img src="<?php echo $row['baseDir'];?>assets/images/img1.png" alt="New york" style="width:100%;">
-          </div>
+            if($slides > 0) {
+              $i = 0;
+              foreach($slides as $slide) {
+                if($i == 0) {
+                  echo '<div class="item active">';
+                } else {
+                  echo '<div class="item">';
+                }
+                echo '<img src="'.$slide['img'].'" style="width: 100%;"/>';
+                echo '<div class="carousel-caption">';
+                echo '<h3>'.$slide['title'].'</h3>';
+                echo '<p>'.$slide['description'].'</p>';
+                echo '</div>';
+                echo '</div>';
+                $i++;
+              }
+            }
+
+          ?>
+          
         </div>
 
         <!-- Left and right controls -->

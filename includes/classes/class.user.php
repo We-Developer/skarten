@@ -128,6 +128,49 @@ class User extends Password{
 			echo '<p class="error">'.$e->getMessage().'</p>';
 		}
 	}
+
+	#Return User ID
+	public function get_id() {
+		try {
+
+			$stmt = $this->_db->prepare('SELECT id FROM user WHERE username = :username');
+			$stmt->execute(array(
+				":username" => $_SESSION['userName']
+			));
+			$row = $stmt->fetch();
+
+			return $row['id'];
+
+		} catch(PDOException $e) {
+			echo $e->getMessage();
+		}
+	}
+
+	#Create URL slug
+	function create_url_slug($string){
+		$slug=preg_replace('/[^A-Za-z0-9-]+/', '-', $string);
+		return $slug;
+	 }
+
+// Function to get the client IP address
+function get_client_ip() {
+    $ipaddress = '';
+    if (isset($_SERVER['HTTP_CLIENT_IP']))
+        $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
+    else if(isset($_SERVER['HTTP_X_FORWARDED_FOR']))
+        $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    else if(isset($_SERVER['HTTP_X_FORWARDED']))
+        $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
+    else if(isset($_SERVER['HTTP_FORWARDED_FOR']))
+        $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
+    else if(isset($_SERVER['HTTP_FORWARDED']))
+        $ipaddress = $_SERVER['HTTP_FORWARDED'];
+    else if(isset($_SERVER['REMOTE_ADDR']))
+        $ipaddress = $_SERVER['REMOTE_ADDR'];
+    else
+        $ipaddress = 'UNKNOWN';
+    return $ipaddress;
+}
 	
 }
 

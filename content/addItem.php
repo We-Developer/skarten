@@ -141,7 +141,7 @@
                         <div class="col-sm-12" style="padding:20px;">
 
                             <p id="formp"> Upload Featured Picture</p>
-                            <input  type="file" class="" style="min-width:100px; padding: 2px;" placeholder="Upload" name="featimg">   
+                            <input  type="file" class="" style="min-width:100px; padding: 2px;" placeholder="Upload" name="featimg" required>   
 
                         </div>
 

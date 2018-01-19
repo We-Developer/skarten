@@ -40,6 +40,34 @@ function invalid() {
     document.getElementById("couponerror").innerHTML = "Invalid Coupon Code";
 }
 
+function remove(id) {
+
+    var xhr;
+    if (window.XMLHttpRequest) { // Mozilla, Safari, ...
+        xhr = new XMLHttpRequest();
+    } else if (window.ActiveXObject) { // IE 8 and older
+        xhr = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    
+    var data = "id=" + id;
+	
+    xhr.open("POST", "../includes/delete-item-cart.php", true); 
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");                  
+    xhr.send(data);
+    xhr.onreadystatechange = display_data;
+
+    function display_data() {
+	    if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+                document.getElementById("success").innerHTML = xhr.responseText;
+            } else {
+                alert('There was a problem with the request.');
+            }
+        }
+    }
+
+}
+
 </script>
 <?php 
     if($user->is_logged_in()) {
@@ -109,7 +137,7 @@ function invalid() {
                         $stm ->execute(array(
                             ':userid' => $userData['id']
                         ));
-                        $cartData = $stm->fetch(PDO::FETCH_ASSOC);
+                        $cartData = $stm->fetchAll(PDO::FETCH_ASSOC);
                         
                         $stm = $dbConnection->prepare('SELECT coupon_id FROM user WHERE username = :username');
                         $stm ->execute(array(
@@ -121,7 +149,25 @@ function invalid() {
                                 <div class='left'>";
 
                                     if($cartData) {
-                                        echo "ALL RIGHT";
+                                        echo "<table>";
+                                        echo "<tr><th>Name</th><th>Quantity</th><th>Price</th><th>Shipping</th><th>Total Price</th><th>Delete</th></tr>";
+                                        foreach($cartData as $obj) {
+
+                                            $stmt = $dbConnection->prepare('SELECT * FROM product WHERE id = :id');
+                                            $stmt->execute(array(
+                                                ":id" => $obj['product_id']
+                                            ));
+
+                                            $objData = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                                            echo "<tr><td>".$objData['name']."</td>";
+                                            echo "<td>".$obj['qty']."</td>";
+                                            echo "<td>".$objData['price']."</td>";
+                                            echo "<td>".$objData['shipping']."</td>";
+                                            echo "<td>".$obj['cost']."</td>";
+                                            echo "<td><a href='' onclick='remove(".$obj['id'].")'><i class='fa fa-times' aria-hidden='true'></i></a></td></tr>";
+                                        }
+                                        echo "</table>";
                                     } else {
                                         echo "
                                             <div class='empty'>
@@ -168,15 +214,27 @@ function invalid() {
                             <div class='row'>
                                 <h1>Recently Viewed Items</h1>
                                 ";
+                                
+                                $stmt = $dbConnection->prepare('SELECT * FROM product_history WHERE user_id = :user_id ORDER BY time LIMIT 5');
+                                $stmt->execute(array(":user_id" => $userData['id']));
+                                $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                                $stm = $dbConnection->prepare('SELECT * FROM product_history WHERE user_id = :userid ORDER BY time LIMIT 5');
-                                $stm ->execute(array(
-                                    ':userid' => $userData['id']
-                                ));
-                                $productHistory = $stm->fetch(PDO::FETCH_ASSOC);
-
-                                if($productHistory) {
-                                    echo "ALL RIGHT";
+                                if($products) {
+                                    echo "<center>";
+                                    foreach($products as $product) {
+                                        $stmt = $dbConnection->prepare('SELECT * FROM product WHERE id = :product_id');
+                                        $stmt->execute(array(":product_id" => $product['product_id']));
+                                        $prod = $stmt->fetch(PDO::FETCH_ASSOC);
+                                        
+                                        echo "<a href='content/view-item?id=".$prod['id']."' alt='".$prod['name']."'>";
+                                        echo "<div class='product'>";
+                                        echo "<img src='../".$prod['img']."' alt='".$prod['name']."'/>";
+                                        echo "<h3>".$prod['name']."</h3>";
+                                        
+                                        echo "<h4>$".$prod['price']."</h4><p> + Shipping of $".$prod['shipping']."</p>";
+                                        echo "</div></a>";
+                                    }
+                                    echo "</center>";
                                 } else {
                                     echo "
                                     <div class='empty'>
@@ -184,6 +242,7 @@ function invalid() {
                                     </div>
                                 ";
                                 }
+                            
 
                             echo "</div>";
 
